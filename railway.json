@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "PORT": "3000"
+    }
+  },
+  "start": {
+    "cmd": "./start.sh"
+  }
+}
