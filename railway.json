@@ -1,5 +1,12 @@
 {
   "build": {
+    "nixpacksPlan": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["php", "php82Extensions.pgsql"]
+        }
+      }
+    },
     "env": {
       "PORT": "3000"
     }
