@@ -90,7 +90,7 @@ $friendPostsResult = pg_query_params($conn, "SELECT p.id, p.title, p.content, p.
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
     <div class="container">
