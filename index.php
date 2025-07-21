@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['new_post_content'], $
     if (!empty($content) && !empty($title)) {
         $insertPost = pg_query_params($conn, "INSERT INTO posts (user_id, title, content) VALUES ($1, $2, $3)", [$user_id, $title, $content]);
         $_SESSION["success"] = $insertPost ? "✅ Post added successfully!" : "❌ Failed to add post.";
-        header("Location: home.php");
+        header("Location: index.php");
         exit;
     }
 }
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['like_post_id'])) {
     if ($liked && pg_num_rows($liked) === 0) {
         pg_query_params($conn, "INSERT INTO likes (post_id, user_id) VALUES ($1, $2)", [$postId, $user_id]);
     }
-    header("Location: home.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['comment_post_id'], $_
     if (!empty($comment)) {
         pg_query_params($conn, "INSERT INTO comments (post_id, user_id, comment) VALUES ($1, $2, $3)", [$postId, $user_id, $comment]);
     }
-    header("Location: home.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -116,7 +116,7 @@ $friendPostsResult = pg_query_params($conn, "SELECT p.id, p.title, p.content, p.
             </div>
         <?php endwhile; ?>
 
-        <form class="friends-search-form" method="get" action="home.php">
+        <form class="friends-search-form" method="get" action="index.php">
             <input type="text" name="search" placeholder="Search friend..." value="<?= htmlspecialchars($searchTerm) ?>">
             <button class="friends-search-button" type="submit">🔍</button>
         </form>
